@@ -6,13 +6,22 @@ class View {
 
 	public $data = [];
     
-    private $ext = '.html';
+    private $ext = '.php';
     
 
-    public function make($view, $data = []){
-		$this -> path = APP . 'views/' . $view . $this -> ext;
-		$this -> data = array_merge($this->data, $data);
+    public function make($main, $data = []){
+		
+		$main = '/'.trim($main, '/');
+
+		$this -> path = APP . 'views' . $main . $this -> ext;
+        $this -> data = array_merge($this->data, $data);
         return $this;
+    }
+    
+    
+    public function content($name, $path, $data = []){
+        $this -> data[$name] = $this -> make($path, $data) -> render();
+		return $this;
     }
     
     

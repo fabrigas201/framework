@@ -72,9 +72,15 @@ class Route{
             }
             
         }
+        
+        $this -> groupAttr = $attr;
+        
         call_user_func($callback, $this);
         
         $this -> groupAttr = $groupAttr;
+        
+       
+        
     }
     
     
@@ -92,6 +98,18 @@ class Route{
     {
         $action = $this->parseAction($action);
 
+		if(!$action instanceOf Closure){
+            $action = $this -> addNamespace($action);
+        }
+		
+		
+        
+        if (isset($this->groupAttr)) {
+            if (isset($this->groupAttr['prefix'])) {
+                $uri = trim($this->groupAttr['prefix'], '/').'/'.trim($uri, '/');
+            }
+        }
+        
         $uri = $uri === '/' ? $uri : '/'.trim($uri, '/');
         
         $this->routes[$uri] = [ 'method' => $method, 'action' => $action];
@@ -160,7 +178,6 @@ class Route{
 
         list($controller, $method) = explode('@', $callback);
 
-        $controller = 'App\\Controllers\\'.$controller;
         
         if (class_exists($controller)) {
             
@@ -171,6 +188,18 @@ class Route{
     }
     
 
+	protected function addNamespace($action)
+    {
+        if (isset($this->groupAttr['namespace']) && isset($action)) {
+            $action = $this->groupAttr['namespace'].'\\'.$action;
+        }
+
+        return $action;
+    }
+	
+	
+	
+	
     public function getPathInfo()
     {
         $query = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';

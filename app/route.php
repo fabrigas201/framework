@@ -3,24 +3,16 @@ $route = new Route();
 
 
 $route -> middleware('auth', function(){
-    return 'Привет мир из middleware <br>';
+    
 });
 
 
 
-/*
 
-$route -> group(['group' => 'admin'], function(){
-    echo 'Hello, world 1';
-});
-
-*/
-
-
-
-
-$route -> group(['middleware' => ['auth']], function($route){
+$route -> group(['prefix'=> 'admin', 'middleware' => ['auth'], 'namespace' => 'App\\Controllers\\Admin'], function($route){
     $route -> get('home/:num', 'Home@action');
+    $route -> get('login', 'Auth@login');
+    $route -> get('users/create', 'Users@create');
     
 });
 

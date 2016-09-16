@@ -16,6 +16,8 @@ class Alias
              'Route' => '\System\Route',
              'View' => '\System\View',
              'Request' => '\System\Request',
+             'Config' => '\System\Config',
+             'DB' => '\System\Database',
              //'Application' => '\System\Application',
         ];
     }
