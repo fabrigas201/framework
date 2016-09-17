@@ -5,13 +5,15 @@ class Request{
     
     private $url;
     
-    public function __construct(){
+    public function __construct()
+	{
         $this -> url = $_SERVER['REQUEST_URI'];
     }
     
     
     // Вернем сегмент URL
-    public function segment($segment){
+    public function segment($segment)
+	{
         
         $urlArray = parse_url($this -> url, PHP_URL_PATH);
         

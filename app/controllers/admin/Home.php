@@ -2,20 +2,9 @@
 
 use System\Controller;
 use System\Request;
-use System\View;
 
 class Home extends Controller{
     
-    
-	public $view;
-	
-	
-    public function __construct(){
-        parent::__construct();
-		
-		$this -> view = new View();
-		
-    }
     
     public function index($a){
         echo 'Привет мир';
@@ -24,10 +13,11 @@ class Home extends Controller{
     public function action(){
         
 		$data = [
-			'title' => 'Привет мир'
+			'title' => 'Привет мир',
+			'content' => 'Тут будет контент'
 		];
 
-		echo $this -> view -> make('admin/main', $data) -> render();
+		$this -> view -> make('admin/test', $data) -> render();
 
 		
     }
@@ -37,4 +27,3 @@ class Home extends Controller{
     public function hello(){
     }
 }
-

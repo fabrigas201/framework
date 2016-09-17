@@ -1,7 +1,8 @@
 {
     "require": {
         "phpmailer/phpmailer": "^5.2",
-        "symfony/var-dumper": "^3.0"
+        "symfony/var-dumper": "^3.0",
+        "fenom/fenom": "^2.11"
     },
     "autoload": {
         "psr-4": {
