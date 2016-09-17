@@ -32,13 +32,28 @@ class View {
 			throw new \BaseException( sprintf('Директории %s не существует', str_replace('\\', '/', $this -> config -> get('config.cache_view'))));
 			return;
 		}
-
+		
+		
 		$this -> template -> setCompileDir(str_replace('\\', '/', $this -> config -> get('config.cache_view')));
+		
+		if(defined('ENVIRONMENT') && ENVIRONMENT === 'DEVELOPER'){
+			$this -> template -> setOptions([
+				'auto_reload' => true,
+				'force_compile' => true
+			]);
+		}else{
+			$this -> template -> setOptions([
+				'auto_reload' => false,
+				'force_compile' => false
+			]);
+		}
+		
 		
 		$main = '/'.trim($main, '/');
 
 		$this -> path =  $main . $this -> ext;
         $this -> data = array_merge($this->data, $data);
+		
 		
         return $this;
     }

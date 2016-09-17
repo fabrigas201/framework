@@ -29,7 +29,7 @@ define('PATH', dirname(__FILE__) . DS);
 define('APP', PATH . 'app' . DS);
 define('SYS', PATH . 'system' . DS);
 define('EXT', '.php');
-define('ENVIRONMENT', 'PRODUCTION');
+define('ENVIRONMENT', 'DEVELOPER');
 
 require_once PATH.'vendor/autoload'.EXT;
 

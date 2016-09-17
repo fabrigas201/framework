@@ -1,8 +1,13 @@
-<!DOCTYPE html>
+<?php 
+/** Fenom template '/admin/test.php' compiled at 2016-09-17 15:07:38 */
+return new Fenom\Render($fenom, function ($var, $tpl) {
+?><!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$title}</title>
+	<title><?php
+/* admin/main.php:5: {$title} */
+ echo $var["title"]; ?></title>
 	<!-- Bootstrap -->
 	<link href="/public/bootstrap.min.css" rel="stylesheet">
 	<link href="" rel="stylesheet">
@@ -45,9 +50,29 @@
 		<div class="row">
             <!-- Main column -->
 			<div class="col-md-12">
-                {block 'content'}{/block}
+                
+	<?php
+/* /admin/test.php:4: {$content} */
+ echo $var["content"]; ?>
+
 			</div>
 		</div>
 	</div>
 </body>
-</html>
+</html><?php
+}, array(
+	'options' => 384,
+	'provider' => false,
+	'name' => '/admin/test.php',
+	'base_name' => '/admin/test.php',
+	'time' => 1474111363,
+	'depends' => array (
+  0 => 
+  array (
+    'admin/main.php' => 1474114001,
+    '/admin/test.php' => 1474111363,
+  ),
+),
+	'macros' => array(),
+
+        ));
