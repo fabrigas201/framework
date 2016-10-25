@@ -48,7 +48,7 @@ class Request{
         return false;
     }
     
-    // Проверям на POST запрос 
+    // Проверям на POST запрос
     public static function isPost()
     {
         return $_SERVER["REQUEST_METHOD"] === "POST";

@@ -1,5 +1,5 @@
 <?php
 return [
-    'view' => APP.'views/default',
-	'cache_view' => APP.'cache'
+    'view' => 'remaller',
+	'cache_view' => 'cache'
 ];

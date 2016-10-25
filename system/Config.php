@@ -4,29 +4,29 @@
 class Config
 {
 
-    private $config = [];
+    private static $config = [];
 
 
-    public function get($key = null, $default = null)
+    public static function get($key = null, $default = null)
     {
 		$keys = explode('.', $key);
 
-		if( ! array_key_exists($file = current($keys), $this -> config)) {
+		if( ! array_key_exists($file = current($keys), self::$config)) {
 			if(is_readable($path = APP . 'config' . DS .  $file . EXT)) {
-				$this -> config[$file] = require $path;
+				self::$config[$file] = require $path;
 			}
 		}
 
-		return $this -> parse($key);
+		return self::parse($key);
     }
     
     
     
-    protected function parse($key)
+    protected static function parse($key)
     {
-        $values = $this -> config;
+        $values = self::$config;
         $parts = explode(".", $key);
-        foreach ($parts as $part) {
+        foreach ($parts as $part){
             if ($part === "") {
                 return $values;
             }
@@ -37,8 +37,6 @@ class Config
         }
         return $values;
     }
-    
-
 }
 
 

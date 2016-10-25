@@ -9,11 +9,27 @@ use System\Auth;
 class Users extends Controller{
     
     
-    public function __construct(){
-        parent::__construct();
-    }
-    
-    
+	public function index(){
+		
+		$data = [
+			'title' => 'Пользователи'
+		];
+		
+		$this -> view -> make('admin/users/index', $data) -> render();
+	}
+	
+	public function groups(){
+		
+		$data = [
+			'title' => 'Группы пользователей'
+		];
+		
+		$this -> view -> make('admin/users/groups', $data) -> render();
+	}
+	 
+	 
+	 
+	 
    public function create(){
        
        $data = [

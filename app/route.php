@@ -1,5 +1,5 @@
 <?php
-$route = new Route();
+
 
 
 $route -> middleware('auth', function(){
@@ -10,23 +10,16 @@ $route -> middleware('auth', function(){
 
 
 $route -> group(['prefix'=> 'admin', 'middleware' => ['auth'], 'namespace' => 'App\\Controllers\\Admin'], function($route){
-    $route -> get('home/:num', 'Home@action');
+    $route -> get('users', 'Users@index');
+	$route -> get('groups', 'Groups@index');
+	$route -> get('groups/create', 'Groups@create');
+	$route -> post('groups/create', 'Groups@store');
+});
+
+
+
+$route -> group(['namespace' => 'App\\Controllers\\Web'], function($route){
     $route -> get('login', 'Auth@login');
-    $route -> get('users/create', 'Users@create');
-    
 });
 
 
-$route -> get('hello', 'Home@hello');
-
-
-$route -> get('index', function(){
-    echo 'index';
-});
-
-
-$route -> get('', function(){
-    echo 'Главная страница';
-});
-
-$route -> dispatch();

@@ -7,13 +7,13 @@ use System\Hash;
 class Auth extends Controller{
     
     
-    public function __construct(){
-        parent::__construct();
-    }
-    
    public function login(){
-       $result = $this -> view -> make('login');
-       echo $result -> render();
+	   
+		$data = [
+		
+		];
+	   
+		$this -> view -> make('default/login', $data);
    }
 }
 

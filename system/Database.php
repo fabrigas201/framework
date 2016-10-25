@@ -48,8 +48,6 @@ class Database {
 				while ($row = $this->statement->fetch(\PDO::FETCH_ASSOC)) {
 					$data[] = $row;
 				}
-
-
 			}
 		} catch (\PDOException $e) {
 			trigger_error('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode() . ' <br />' . $sql);

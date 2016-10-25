@@ -4,8 +4,7 @@ class Alias
 {
     public function __construct()
     {
-        $classes = $this->classes();
-        foreach ($classes as $key => $value) {
+        foreach ($this->classes() as $key => $value) {
             class_alias($value, $key);
         }
     }
@@ -13,12 +12,12 @@ class Alias
     private function classes()
     {
         return [
-             'Route' => '\System\Route',
-             'View' => '\System\View',
-             'Request' => '\System\Request',
-             'Config' => '\System\Config',
-             'DB' => '\System\Database',
-             //'Application' => '\System\Application',
+			'Route' => '\System\Route',
+			'View' => '\System\View',
+			'Request' => '\System\Request',
+			'Config' => '\System\Config',
+			'DB' => '\System\Database',
+			'Init' => '\System\Init',
         ];
     }
 }

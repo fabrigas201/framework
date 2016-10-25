@@ -1,4 +1,7 @@
 /vendor
 /node_modules
 /cache/
+/app/views/
+/plugins/
+/public/
 .env

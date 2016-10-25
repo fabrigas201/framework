@@ -1,7 +1,8 @@
 <?php namespace System;
 
 use Request;
-
+use System\Exception\NotFoundException;
+use System\Exception\MethodFoundException;
 
 class Route{
 
@@ -112,7 +113,7 @@ class Route{
         
         $uri = $uri === '/' ? $uri : '/'.trim($uri, '/');
         
-        $this->routes[$uri] = [ 'method' => $method, 'action' => $action];
+        $this->routes[$method.$uri] = [ 'method' => $method, 'action' => $action];
     }
     
     
@@ -120,8 +121,9 @@ class Route{
     
     public function dispatch(){
         
-        $request = new Request();
-        
+        $methods = [];
+		
+		
         if(is_array($this->routes)){
             
            
@@ -130,12 +132,12 @@ class Route{
 
             foreach($this->routes as $uri => $routes){
 
-                if($routes['method'] != $request -> getMethod()){
-                    return false;
-                }
-            
-                if($uri == $this -> getPathInfo()){
-                      return $this -> call($routes['action']);
+			
+				$methods[] = $routes['method'];
+			
+			
+                if($uri == $routes['method'].$this -> getPathInfo()){
+                    return $this -> call($routes['action'], $routes['method']);
                 }
                 
                 
@@ -143,48 +145,53 @@ class Route{
                     $uri = str_replace($searches, $replaces, $uri);
                 }
                 
-                
-                if(preg_match('#^' . $uri . '$#', $this -> getPathInfo(), $matched)) {
+                if(preg_match('#^' . $uri . '$#', $routes['method'].$this -> getPathInfo(), $matched)) {
                    
-                    return $this -> call($routes['action']);
+                    return $this -> call($routes['action'], $routes['method']);
                 }
             }
         }
+		
     }
   
   
   
-    protected function callController($className, $method, $params)
+    protected function callController($className, $methodController, $params)
     {
 
         $controller = new $className();
         
-        if (! in_array(strtolower($method), array_map('strtolower', get_class_methods($controller)))) {
-            return false;
+        if (! in_array(strtolower($methodController), array_map('strtolower', get_class_methods($controller)))) {
+            throw new MethodFoundException($methodController, get_class($controller));
         }
         
-        call_user_func_array([$controller, $method], $params);
+        call_user_func_array([$controller, $methodController], $params);
 
         return true;
     }
     
     
-    protected function call($callback, $params = array())
+    protected function call($callback,$method, $params = array())
     {
+		$request = new Request();
+		
         if (is_object($callback)) {
             call_user_func_array($callback, $params);
             return true;
         }
 
-        list($controller, $method) = explode('@', $callback);
+        list($controller, $methodController) = explode('@', $callback);
 
-        
+		
+		
+		
+		
         if (class_exists($controller)) {
             
-            return $this -> callController($controller, $method, $params);
+            return $this -> callController($controller, $methodController, $params);
         }
 
-        return false;
+        echo '3333';
     }
     
 
@@ -196,7 +203,6 @@ class Route{
 
         return $action;
     }
-	
 	
 	
 	
