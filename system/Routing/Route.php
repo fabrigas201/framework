@@ -3,7 +3,7 @@
 use Request;
 use Response;
 use System\Exception\NotFoundException;
-use System\Exception\MethodFoundException;
+use System\Exception\MethodNotFoundException;
 
 class Route{
 
@@ -129,9 +129,8 @@ class Route{
 				if($request -> getMethod() != $routes['method']){
 					continue;
 				}
-			
                 if($uri == $routes['method'].$this -> getPathInfo()){
-                    return $this -> call($routes['action'], $routes['method']);
+					return $this -> call($routes['action']);
                 }
                 
                 if(strpos($uri, ':') !== false) {
@@ -139,7 +138,7 @@ class Route{
                 }
                 
                 if(preg_match('#^' . $uri . '$#', $routes['method'].$this -> getPathInfo(), $matched)) {
-                    return $this -> call($routes['action'], $routes['method']);
+                    return $this -> call($routes['action']);
                 }
             }
         }
@@ -154,16 +153,18 @@ class Route{
         $controller = new $className();
         
         if (! in_array(strtolower($methodController), array_map('strtolower', get_class_methods($controller)))) {
-            throw new MethodFoundException($methodController, $controller);
+            throw new MethodNotFoundException($methodController, $controller);
         }
-        
-        call_user_func_array([$controller, $methodController], $params);
-
-        return true;
+        $response = call_user_func_array([$controller, $methodController], $params);
+		
+		if(is_string($response)){
+			return Response::create($response) -> sendContent();
+		}
+		return $response;
     }
     
     
-    protected function call($callback,$method, $params = array())
+    protected function call($callback, $params = array())
     {
 		
         if (is_object($callback)) {
@@ -174,8 +175,7 @@ class Route{
         list($controller, $methodController) = explode('@', $callback);
 
         if (class_exists($controller)) {
-            
-            return new Response($this -> callController($controller, $methodController, $params));
+            return $this -> callController($controller, $methodController, $params);
         }
 
         echo '3333';
