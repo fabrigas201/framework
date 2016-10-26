@@ -12,9 +12,10 @@ class Alias
     private function classes()
     {
         return [
-			'Route' => '\System\Route',
+			'Route' => '\System\Routing\Route',
 			'View' => '\System\View',
 			'Request' => '\System\Request',
+			'Response' => '\System\Response',
 			'Config' => '\System\Config',
 			'DB' => '\System\Database',
 			'Init' => '\System\Init',

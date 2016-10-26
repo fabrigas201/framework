@@ -28,7 +28,7 @@ class Groups extends Controller{
 	}
 	
 	public function store(){
-		return 'Method POST';
+		return redirect('admin/groups/create');
 	}
 }
 

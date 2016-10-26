@@ -7,7 +7,7 @@ class MethodFoundException extends Exception
 {
     public function __construct($methodController, $class) {
        set_exception_handler(array($this, 'exception_handler'));
-       throw new Exception('Method [<b style="color:orange;">'.(string)$methodController.'</b>] Not Found in class [<b style="color:orange;">'.(string)$class.'</b>]');
+       throw new Exception('Method [<b style="color:orange;">'.(string)$methodController.'</b>] Not Found in class [<b style="color:orange;">'.(string)get_class($class).'</b>]');
 	}
 
 	public function exception_handler($e) {

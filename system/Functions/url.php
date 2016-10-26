@@ -23,6 +23,6 @@ if(!function_exists('asset')){
 
 
 function redirect($url) {
-    header('Location: '.$url); exit;
+    header('Location: '.get_url($url)); exit;
 }
 
