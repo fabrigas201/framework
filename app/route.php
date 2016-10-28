@@ -16,7 +16,7 @@ $route -> group(['prefix'=> 'admin', 'middleware' => ['auth'], 'namespace' => 'A
 	$route -> post('groups/create', 'Groups@store');
 	$route -> get('groups/edit/:num', 'Groups@edit');
 	$route -> post('groups/edit/:num', 'Groups@update');
-	$route -> get('groups/delete/:num', 'Groups@delete');
+	//$route -> get('groups/delete/:num', 'Groups@delete');
 });
 
 
