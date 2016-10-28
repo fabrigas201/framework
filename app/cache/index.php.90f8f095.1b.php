@@ -1,5 +1,5 @@
 <?php 
-/** Fenom template '/admin/groups/index.php' compiled at 2016-10-28 19:53:42 */
+/** Fenom template '/admin/groups/index.php' compiled at 2016-10-28 23:16:34 */
 return new Fenom\Render($fenom, function ($var, $tpl) {
 ?><!DOCTYPE html>
 <html>
@@ -380,7 +380,54 @@ return new Fenom\Render($fenom, function ($var, $tpl) {
 	<div class="box">
 		<!-- /.box-header -->
 		<div class="box-body">
-			
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Группа</th>
+						<th class="text-right">Действия</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php
+/* /admin/groups/index.php:16: {if count($ugroups)} */
+ if(count($var["ugroups"])) { ?>
+					<?php  if(!empty($var["ugroups"]) && (is_array($var["ugroups"]) || $var["ugroups"] instanceof \Traversable)) {
+  foreach($var["ugroups"] as $var["id"] => $var["group"]) { ?>
+					<tr>
+						<td><?php
+/* /admin/groups/index.php:19: {$id} */
+ echo $var["id"]; ?></td>
+						<td><?php
+/* /admin/groups/index.php:20: {$group['name']} */
+ echo $var["group"]['name']; ?></td>
+						<td class="text-right">
+							<div class="pull-right box-tools">
+								<a href="<?php
+/* /admin/groups/index.php:23: {get_url('admin/groups/edit/'~$id)} */
+ echo get_url(('admin/groups/edit/'.strval($var["id"]))); ?>" class="btn btn-info btn-sm" title="Редактировать <?php
+/* /admin/groups/index.php:23: {$group['name']} */
+ echo $var["group"]['name']; ?>">
+									<i class="fa fa-edit"></i>
+								</a>
+								<a href="<?php
+/* /admin/groups/index.php:26: {get_url('admin/groups/delete/'~$id)} */
+ echo get_url(('admin/groups/delete/'.strval($var["id"]))); ?>" class="btn btn-info btn-sm" title="Удалить <?php
+/* /admin/groups/index.php:26: {$group['name']} */
+ echo $var["group"]['name']; ?>">
+									<i class="fa fa-times"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<?php
+/* /admin/groups/index.php:32: {/foreach} */
+   } } ?>
+				<?php
+/* /admin/groups/index.php:33: {/if} */
+ } ?>
+				</tbody>
+			</table>
 		</div>
 	<!-- /.box-body -->
 	</div>
@@ -642,12 +689,12 @@ return new Fenom\Render($fenom, function ($var, $tpl) {
 	'provider' => false,
 	'name' => '/admin/groups/index.php',
 	'base_name' => '/admin/groups/index.php',
-	'time' => 1477673620,
+	'time' => 1477685771,
 	'depends' => array (
   0 => 
   array (
     'admin/main.php' => 1477673515,
-    '/admin/groups/index.php' => 1477673620,
+    '/admin/groups/index.php' => 1477685771,
   ),
 ),
 	'macros' => array(),

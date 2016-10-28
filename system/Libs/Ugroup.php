@@ -32,14 +32,7 @@ class Ugroup {
 		}
 		
 		return $uGroup;
-		
 
-	// Initialize name according to current selected language
-	//foreach ($UGROUP as $id => $v) {
-		//$UGROUP[$id]['name'] = (isset($UGROUP[$id]['langName'][$config['default_lang']]))?$UGROUP[$id]['langName'][$config['default_lang']]:$UGROUP[$id]['identity'];
-	//}
-		
-		
 	}
 	
 	
@@ -49,14 +42,7 @@ class Ugroup {
 		if(!is_array($data)){
 			$data = [];
 		}
-		
-		
-		
-		
-		$fcData = "<?php\n".'return '.var_export($save_con, true)."\n;?>";
-		
-		
-		
+	
 	}
 	
 	

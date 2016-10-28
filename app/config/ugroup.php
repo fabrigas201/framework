@@ -20,20 +20,5 @@ return array (
     'alias' => 'test',
     'name' => 'test',
   ),
-  5 => 
-  array (
-    'name' => 'Пользователи',
-    'alias' => 'users',
-  ),
-  6 => 
-  array (
-    'name' => 'Пользователи',
-    'alias' => 'users',
-  ),
-  7 => 
-  array (
-    'name' => 'Пользователи',
-    'alias' => 'users',
-  ),
 )
 ;

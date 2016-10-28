@@ -12,8 +12,13 @@ class Groups extends Controller{
     
 	public function index(){
 		
+		$uGroup = new Ugroup;
+		$uGroups = $uGroup -> load();
+		
+		
 		$data = [
-			'title' => 'Группы пользователей'
+			'title' => 'Группы пользователей',
+			'ugroups' => $uGroups
 		];
 		
 		$this -> view -> make('admin/groups/index', $data) -> render();

@@ -1,5 +1,5 @@
 <?php 
-/** Fenom template '/admin/groups/edit.php' compiled at 2016-10-28 21:56:08 */
+/** Fenom template '/admin/groups/edit.php' compiled at 2016-10-28 23:09:37 */
 return new Fenom\Render($fenom, function ($var, $tpl) {
 ?><!DOCTYPE html>
 <html>

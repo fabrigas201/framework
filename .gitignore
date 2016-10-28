@@ -1,6 +1,6 @@
 /vendor
 /node_modules
-/cache
+/app/cache/
 /app/views/
 /plugins/
 /public/
