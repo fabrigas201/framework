@@ -15,7 +15,6 @@ class Groups extends Controller{
 		$uGroup = new Ugroup;
 		$uGroups = $uGroup -> load();
 		
-		
 		$data = [
 			'title' => 'Группы пользователей',
 			'ugroups' => $uGroups
