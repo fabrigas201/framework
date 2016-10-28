@@ -1,5 +1,6 @@
 <?php
 return [
-    'view' => 'remaller',
-	'cache_view' => 'cache'
+    'theme' => 'remaller',
+	'cache_theme' => 'cache',
+	'template' => 'fenom', 
 ];

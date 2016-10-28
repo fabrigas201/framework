@@ -22,10 +22,8 @@ class Route{
     
     protected $middleware;
     
-    public function __construct() {
-	}
+    public function __construct() {}
     
-
     public function get($uri, $action)
     {
         $this->setRoute('GET', $uri, $action);
@@ -120,7 +118,6 @@ class Route{
 		
         if(is_array($this->routes)){
             
-           
             $searches = array_keys($this -> patterns);
 		    $replaces = array_values($this -> patterns);
 

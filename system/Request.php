@@ -47,6 +47,16 @@ class Request{
         }
         return false;
     }
+	
+	public function post($key)
+    {
+        return array_key_exists($key, $_POST)? $_POST[$key]: null;
+    }
+	
+	public static function get($key)
+    {
+        return array_key_exists($key, $_GET)? $_GET[$key]: null;
+    }
     
     // Проверям на POST запрос
     public static function isPost()

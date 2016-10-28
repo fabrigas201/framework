@@ -1,5 +1,5 @@
 <?php 
-/** Fenom template '/admin/groups/create.php' compiled at 2016-10-26 23:46:42 */
+/** Fenom template '/admin/groups/create.php' compiled at 2016-10-28 21:55:49 */
 return new Fenom\Render($fenom, function ($var, $tpl) {
 ?><!DOCTYPE html>
 <html>
@@ -349,8 +349,8 @@ return new Fenom\Render($fenom, function ($var, $tpl) {
 /* admin/main.php:333: {get_url('admin/users')} */
  echo get_url('admin/users'); ?>"><i class="fa fa-user"></i> <span>Пользователи</span></a></li>
 				<li><a href="<?php
-/* admin/main.php:334: {get_url('admin/users/groups')} */
- echo get_url('admin/users/groups'); ?>"><i class="fa fa-users"></i> <span>Группы пользователей</span></a></li>
+/* admin/main.php:334: {get_url('admin/groups')} */
+ echo get_url('admin/groups'); ?>"><i class="fa fa-users"></i> <span>Группы пользователей</span></a></li>
 			</ul>
 		</li>
       </ul>
@@ -379,24 +379,28 @@ return new Fenom\Render($fenom, function ($var, $tpl) {
 <div class="col-xs-12">
 	<div class="box">
 		<!-- /.box-header -->
-		<div class="box-body">
-			<div class="form-group">
-				<form action="<?php
-/* /admin/groups/create.php:8: {get_url('admin/groups/create')} */
+		<form class="form-horizontal" action="<?php
+/* /admin/groups/create.php:6: {get_url('admin/groups/create')} */
  echo get_url('admin/groups/create'); ?>" method="POST">
-					<label for="addGroup" class="col-sm-2 control-label">Добавить группу</label>
-
+			<div class="box-body">
+				<div class="form-group">
+					<label for="addGroup" class="col-sm-2 control-label">Название группы</label>
 					<div class="col-sm-10">
-						<div class="input-group input-group-sm">
-							<input type="text" class="form-control" />
-							<span class="input-group-btn">
-							  <button type="submit" class="btn btn-info btn-flat">Добавить группу</button>
-							</span>
-						</div>
+						<input name="groupName" type="text" class="form-control" />
 					</div>
-				</form>
+				</div>
+				<div class="form-group">
+					<label for="addGroup" class="col-sm-2 control-label">Alias Группы</label>
+					<div class="col-sm-10">
+						<input name="groupAlias" type="text" class="form-control" />
+						<small class="help-block">Необязательно вводить. Если поле пусто то генерируется автоматически. Например: Пользователи -> polzovateli</small>
+					</div>
+				</div>
 			</div>
-		</div>
+			<div class="box-footer">
+				<button type="submit" class="btn pull-right btn-info btn-flat">Добавить группу</button>
+			</div>
+		</form>
 	<!-- /.box-body -->
 	</div>
   <!-- /.box -->
@@ -657,12 +661,12 @@ return new Fenom\Render($fenom, function ($var, $tpl) {
 	'provider' => false,
 	'name' => '/admin/groups/create.php',
 	'base_name' => '/admin/groups/create.php',
-	'time' => 1477242634,
+	'time' => 1477674860,
 	'depends' => array (
   0 => 
   array (
-    'admin/main.php' => 1477241037,
-    '/admin/groups/create.php' => 1477242634,
+    'admin/main.php' => 1477673515,
+    '/admin/groups/create.php' => 1477674860,
   ),
 ),
 	'macros' => array(),

@@ -16,25 +16,25 @@ class View {
 		
 		$this -> config = new Config();
 		
-		if(!is_dir(TEMPLATE.'/'.$this -> config -> get('config.view'))){
-			throw new BaseException( sprintf('Директории %s не существует', str_replace('\\', '/', TEMPLATE.'/'.$this -> config -> get('config.view'))));
+		if(!is_dir(THEME.'/'.$this -> config -> get('config.theme'))){
+			throw new BaseException( sprintf('Директории %s не существует', str_replace('\\', '/', THEME.'/'.$this -> config -> get('config.theme'))));
 			return;
 		}
 
-		$this -> template = new Fenom(new Fenom\Provider(str_replace('\\', '/', TEMPLATE.'/'.$this -> config -> get('config.view'))));
+		$this -> template = new Fenom(new Fenom\Provider(str_replace('\\', '/', THEME.'/'.$this -> config -> get('config.theme'))));
 		
 	}
 	
 
     public function make($main, $data = []){
 		
-		if(!is_dir(APP.'/'.$this -> config -> get('config.cache_view'))){
-			throw new \BaseException( sprintf('Директории %s не существует', str_replace('\\', '/', APP.'/'.$this -> config -> get('config.cache_view'))));
+		if(!is_dir(APP.'/'.$this -> config -> get('config.cache_theme'))){
+			throw new \BaseException( sprintf('Директории %s не существует', str_replace('\\', '/', APP.'/'.$this -> config -> get('config.cache_theme'))));
 			return;
 		}
 		
 		
-		$this -> template -> setCompileDir(str_replace('\\', '/', APP.'/'.$this -> config -> get('config.cache_view')));
+		$this -> template -> setCompileDir(str_replace('\\', '/', APP.'/'.$this -> config -> get('config.cache_theme')));
 		
 		if(defined('ENVIRONMENT') && ENVIRONMENT === 'DEVELOPER'){
 			$this -> template -> setOptions([

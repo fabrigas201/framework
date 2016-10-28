@@ -1,13 +1,20 @@
-<!DOCTYPE html>
+<?php 
+/** Fenom template '/admin/groups/index.php' compiled at 2016-10-28 19:53:42 */
+return new Fenom\Render($fenom, function ($var, $tpl) {
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{$title}</title>
+  <title><?php
+/* admin/main.php:6: {$title} */
+ echo $var["title"]; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="{asset('admin/assets/css/bootstrap.min.css')}">
+  <link rel="stylesheet" href="<?php
+/* admin/main.php:10: {asset('admin/assets/css/bootstrap.min.css')} */
+ echo asset('admin/assets/css/bootstrap.min.css'); ?>">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -15,9 +22,13 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{asset('admin/assets/css/AdminLTE.min.css')}">
+  <link rel="stylesheet" href="<?php
+/* admin/main.php:18: {asset('admin/assets/css/AdminLTE.min.css')} */
+ echo asset('admin/assets/css/AdminLTE.min.css'); ?>">
   <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{asset('admin/assets/css/skins/_all-skins.min.css')}">
+  <link rel="stylesheet" href="<?php
+/* admin/main.php:20: {asset('admin/assets/css/skins/_all-skins.min.css')} */
+ echo asset('admin/assets/css/skins/_all-skins.min.css'); ?>">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -321,8 +332,12 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
 		<li class="header">Навигация</li>
-        <li><a href="{get_url('admin/products')}"><i class="fa fa-shopping-cart"></i> <span>Товары</span></a></li>
-		<li><a href="{get_url('admin/cats')}"><i class="fa fa-list"></i> <span>Категории</span></a></li>
+        <li><a href="<?php
+/* admin/main.php:324: {get_url('admin/products')} */
+ echo get_url('admin/products'); ?>"><i class="fa fa-shopping-cart"></i> <span>Товары</span></a></li>
+		<li><a href="<?php
+/* admin/main.php:325: {get_url('admin/cats')} */
+ echo get_url('admin/cats'); ?>"><i class="fa fa-list"></i> <span>Категории</span></a></li>
 		<li class="treeview">
 			<a href="#"><i class="fa fa-cog"></i> <span>Система</span> 
 				<span class="pull-right-container">
@@ -330,8 +345,12 @@
                 </span>
 			</a>
 			<ul class="treeview-menu">
-				<li><a href="{get_url('admin/users')}"><i class="fa fa-user"></i> <span>Пользователи</span></a></li>
-				<li><a href="{get_url('admin/groups')}"><i class="fa fa-users"></i> <span>Группы пользователей</span></a></li>
+				<li><a href="<?php
+/* admin/main.php:333: {get_url('admin/users')} */
+ echo get_url('admin/users'); ?>"><i class="fa fa-user"></i> <span>Пользователи</span></a></li>
+				<li><a href="<?php
+/* admin/main.php:334: {get_url('admin/groups')} */
+ echo get_url('admin/groups'); ?>"><i class="fa fa-users"></i> <span>Группы пользователей</span></a></li>
 			</ul>
 		</li>
       </ul>
@@ -343,7 +362,9 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-		<h1>{$title}</h1>
+		<h1><?php
+/* admin/main.php:346: {$title} */
+ echo $var["title"]; ?></h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 			<li><a href="#">Tables</a></li>
@@ -354,7 +375,18 @@
     <!-- Main content -->
     <section class="content">
 		<div class="row">
-		{block 'content'}{/block}
+		
+<div class="col-xs-12">
+	<div class="box">
+		<!-- /.box-header -->
+		<div class="box-body">
+			
+		</div>
+	<!-- /.box-body -->
+	</div>
+  <!-- /.box -->
+</div>
+
 		<!-- /.col -->
 		</div>
       <!-- /.row -->
@@ -567,18 +599,28 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-<script src="{asset('admin/assets/js/jquery-2.2.3.min.js')}"></script>
+<script src="<?php
+/* admin/main.php:570: {asset('admin/assets/js/jquery-2.2.3.min.js')} */
+ echo asset('admin/assets/js/jquery-2.2.3.min.js'); ?>"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{asset('admin/assets/js/bootstrap.min.js')}"></script>
+<script src="<?php
+/* admin/main.php:572: {asset('admin/assets/js/bootstrap.min.js')} */
+ echo asset('admin/assets/js/bootstrap.min.js'); ?>"></script>
 
 <!-- SlimScroll -->
 <!-- <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
 <!-- FastClick -->
-<script src="{asset('admin/assets/js/fastclick/fastclick..min.js')}"></script>
+<script src="<?php
+/* admin/main.php:577: {asset('admin/assets/js/fastclick/fastclick..min.js')} */
+ echo asset('admin/assets/js/fastclick/fastclick..min.js'); ?>"></script>
 <!-- AdminLTE App -->
-<script src="{asset('admin/assets/js/app.min.js')}"></script>
+<script src="<?php
+/* admin/main.php:579: {asset('admin/assets/js/app.min.js')} */
+ echo asset('admin/assets/js/app.min.js'); ?>"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{asset('admin/assets/js/demo.js')}"></script>
+<script src="<?php
+/* admin/main.php:581: {asset('admin/assets/js/demo.js')} */
+ echo asset('admin/assets/js/demo.js'); ?>"></script>
 <!-- page script -->
 <script>
   $(function () {
@@ -594,4 +636,20 @@
   });
 </script>
 </body>
-</html>
+</html><?php
+}, array(
+	'options' => 384,
+	'provider' => false,
+	'name' => '/admin/groups/index.php',
+	'base_name' => '/admin/groups/index.php',
+	'time' => 1477673620,
+	'depends' => array (
+  0 => 
+  array (
+    'admin/main.php' => 1477673515,
+    '/admin/groups/index.php' => 1477673620,
+  ),
+),
+	'macros' => array(),
+
+        ));

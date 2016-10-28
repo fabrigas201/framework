@@ -24,12 +24,12 @@ if(version_compare(phpversion(), '5.6.0', '<') == true) {
 
 
 define('DS', '/'); // DIRECTORY_SEPARATOR
-
+//define('DS', 'DIRECTORY_SEPARATOR');
 
 define('BASE_URL', 'http://'.dirname($_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']) .'/');
 
 define('PATH', dirname(__FILE__) . DS);
-define('TEMPLATE', PATH.DS.'public'.DS.'templates');
+define('THEME', PATH.DS.'public'.DS.'templates');
 define('APP', PATH . 'app' . DS);
 define('SYS', PATH . 'system' . DS);
 define('EXT', '.php');

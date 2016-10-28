@@ -38,6 +38,20 @@ class Database {
 
     
     public function query($sql, $params = array()) {
+
+		//$db = new DB;
+			
+		//$db -> query('INSERT INTO #_users_group (`name`, `permissions`) VALUES ("'.$_POST['groupName'].'", "")');
+		
+	
+		$config = new Config();
+		$prefix = $config -> get('database.prefix');
+		
+		if(stristr($sql, '#_') !== false){
+			$sql = str_replace('#_', $prefix, $sql);
+		}
+		
+		
 		$this->statement = $this->pdo->prepare($sql);
 		$result = false;
 
@@ -61,51 +75,5 @@ class Database {
 			return;
 		}
 	}
-    
-    public function insert($table, array $attributes){
-        $config = new Config();
-        $prefix = $config -> get('database.prefix');
-        
-
-        
-        $fields = '(';
-        $values = '(';
-        foreach ($attributes as $k => $v)
-        {
-            if ($k != 'id')
-            {
-              $fields .= $k . ', ';
-              $values .= ':' . $k . ', ';
-            }
-        }
-        $fields = substr($fields, 0, -2) . ')';
-        $values = substr($values, 0, -2) . ')';
-
-
-        $sql = "INSERT INTO `".$prefix.$table."` ".$fields. " VALUES ". $values;
-        
-        $this -> pdo -> beginTransaction();
-        
-        try{
-             $query = $this -> pdo -> prepare($sql);
-
-            foreach ($attributes as $k => $v)
-            {
-              if ($k != 'id')
-              {
-                if (is_bool($v))
-                  $query->bindValue(':' . $k, $v, \PDO::PARAM_BOOL);
-                else
-                  $query->bindValue(':' . $k, $v);
-              }
-            }
-            $query->execute();
-        }catch(Exception $e){
-            echo $e -> getMessage();
-            $this -> pdo -> rollback();
-        }
-        $this -> pdo -> commit();
-    }
-
 }
 
