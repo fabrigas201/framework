@@ -20,7 +20,7 @@
 						<td>{$group['name']}</td>
 						<td class="text-right">
 							<div class="pull-right box-tools">
-								<a href="{get_url('admin/groups/edit/'~$id)}" class="btn btn-info btn-sm" title="Редактировать {$group['name']}">
+								<a href="{get_url('admin/permissions/edit/'~$id)}" class="btn btn-info btn-sm" title="Редактировать {$group['name']}">
 									<i class="fa fa-edit"></i>
 								</a>
 								<a href="{get_url('admin/groups/delete/'~$id)}" class="btn btn-info btn-sm" title="Удалить {$group['name']}">

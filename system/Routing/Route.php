@@ -175,7 +175,7 @@ class Route{
             return $this -> callController($controller, $methodController, $params);
         }
 
-        echo '3333';
+        echo 'Class Not Found';
     }
     
 
@@ -195,10 +195,6 @@ class Route{
         $query = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
         return '/'.trim(str_replace('?'.$query, '', $_SERVER['REQUEST_URI']), '/');
-    }
-    
-    public function show_404(){
-        echo 'Страница не найдена';
     }
 
 }

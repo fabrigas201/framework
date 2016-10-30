@@ -12,7 +12,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="addGroup" class="col-sm-2 control-label">Alias Группы</label>
+					<label for="groupAlias" class="col-sm-2 control-label">Alias Группы</label>
 					<div class="col-sm-10">
 						<input name="groupAlias" type="text" class="form-control" value="{$groupAlias}" />
 						<small class="help-block">Необязательно вводить. Если поле пусто то генерируется автоматически. Например: Пользователи -> polzovateli</small>

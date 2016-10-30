@@ -2,13 +2,13 @@
 return array (
   1 => 
   array (
-    'alias' => 'administrator',
     'name' => 'Администратор',
+    'alias' => 'administrator',
   ),
   2 => 
   array (
-    'name' => 'Редакторы',
-    'alias' => 'editor',
+    'name' => 'Покупатели',
+    'alias' => 'clients',
   ),
   3 => 
   array (
@@ -17,8 +17,13 @@ return array (
   ),
   4 => 
   array (
-    'alias' => 'test',
-    'name' => 'test',
+    'name' => 'Тест',
+    'alias' => 'test1',
+  ),
+  5 => 
+  array (
+    'name' => 'text2',
+    'alias' => 'text2',
   ),
 )
 ;
