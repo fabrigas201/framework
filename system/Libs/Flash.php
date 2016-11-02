@@ -26,22 +26,10 @@ class Flash {
 	
 	public static function display($type){
 		if(self::get($type)){
-			switch($type){
-				case 'error': 
-					$block = sprintf(self::$template, 'alert alert-danger alert-dismissible', self::get($type));
-				break;
-				case 'warning': 
-					$block = sprintf(self::$template, 'alert alert-warning alert-dismissible', self::get($type));
-				break;
-				case 'success': 
-					$block = sprintf(self::$template, 'alert alert-success alert-dismissible', self::get($type));
-				break;
-				case 'info': 
-					$block = sprintf(self::$template, 'alert alert-info alert-dismissible', self::get($type));
-				break;
-				default:
-					$block = self::get($type);
-				break;
+			if(in_array($type, ['error', 'warning', 'success', 'info'])){
+				$block = sprintf(self::$template, 'alert alert-'.$type.' alert-dismissible', self::get($type));
+			}else{
+				$block = self::get($type);
 			}
 			return $block;
 		}
