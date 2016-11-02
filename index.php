@@ -20,9 +20,6 @@ if(version_compare(phpversion(), '5.6.0', '<') == true) {
     die('PHP >= 5.6.0 Only (Версия PHP должна быть >= 5.6.0)');
 }
 
-
-
-
 define('DS', '/'); // DIRECTORY_SEPARATOR
 //define('DS', 'DIRECTORY_SEPARATOR');
 
@@ -36,6 +33,8 @@ define('EXT', '.php');
 define('ENVIRONMENT', 'DEVELOPER');
 
 require_once PATH.'vendor/autoload'.EXT;
+
+\System\Libs\Flash::init();
 
 new System\Alias();
 

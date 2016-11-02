@@ -6,6 +6,7 @@ use System\Hash;
 use DB;
 use Config;
 use System\Auth;
+use System\Libs\Flash;
 use System\Libs\Ugroup;
 use System\Libs\Validator;
 class Users extends Controller{
@@ -55,9 +56,11 @@ class Users extends Controller{
 	   
 	   
 		if($validator -> validated()){
-			echo 'Success';
+			Flash::success('Пользователь добавлен');
+			redirect('/admin/users/create');
 		}else{
-			dump($validator -> errors());
+			Flash::error('Ошибка добаления пользователя');
+			redirect('/admin/users/create');
 		}
 	   
 	   

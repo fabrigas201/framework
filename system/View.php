@@ -3,7 +3,7 @@
 use Config;
 use Fenom;
 use System\Exception\BaseException;
-
+use System\Libs\Flash;
 class View {
 
 	public $path;
