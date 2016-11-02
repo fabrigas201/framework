@@ -6,6 +6,8 @@ use System\Hash;
 use DB;
 use Config;
 use System\Auth;
+use System\Libs\Ugroup;
+use System\Libs\Validator;
 class Users extends Controller{
     
     
@@ -18,31 +20,48 @@ class Users extends Controller{
 		$this -> view -> make('admin/users/index', $data) -> render();
 	}
 	
-	public function groups(){
+	 
+	public function create(){
+       
+		$uGroup = new Ugroup;
+		$uGroups = $uGroup -> load();
 		
 		$data = [
-			'title' => 'Группы пользователей'
+            'title' => 'Добавление пользователя',
+			'action' => get_url('admin/users/create'),
+			'ugroups' => $uGroups
+		];
+
+       $this -> view -> make('admin/users/create', $data) -> render();
+	}
+   
+   
+	public function store(){
+		
+		$rules = [
+			'email' => [
+				'name' => 'Email',
+				'rules' => ['required', 'email', 'alpha'],
+			],
+			'lastname' => [
+				'name' => 'Фамилия',
+				'rules' => ['alpha', 'required']
+				
+			]
 		];
 		
-		$this -> view -> make('admin/users/groups', $data) -> render();
+		$validator = new Validator($rules);
+		
+	   
+	   
+		if($validator -> validated()){
+			echo 'Success';
+		}else{
+			dump($validator -> errors());
+		}
+	   
+	   
 	}
-	 
-	 
-	 
-	 
-   public function create(){
-       
-       $data = [
-            'title' => 'Добавление пользователя',
-            'content' => $this -> view -> make('users/create')-> render(),
-       ];
-
-       
-       $auth = new Auth;
-       
-       dump($auth -> create(['name' => 'Имя', 'lastname' => 'Фамилия']));
-
-       echo $this -> view -> make('main', $data) -> render();
-   }
+   
 }
 

@@ -24,9 +24,7 @@ class Groups extends Controller{
 	}
 	
 	public function create(){
-		
-		$ugroup = new Ugroup;
-		
+
 		$data = [
 			'title' => 'Добавить группу'
 		];
