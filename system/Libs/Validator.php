@@ -51,7 +51,7 @@ class Validator {
         return is_numeric($value);
     }
 	
-	protected function validInteger($field, $value)
+	protected function validInteger($value)
     {
         return filter_var($value, \FILTER_VALIDATE_INT) !== false;
     }
@@ -60,6 +60,24 @@ class Validator {
 	protected function validEmail($value, $params = null){
 		return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 	}
+	
+	protected function validMin($value, $params)
+    {
+        return $params <= $this -> stringLength($value);
+    }
+	
+	
+	
+	
+	protected function stringLength($value)
+    {
+        if (!is_string($value)) {
+            return false;
+        } elseif (function_exists('mb_strlen')) {
+            return mb_strlen($value);
+        }
+        return strlen($value);
+    }
 	
 	
 	
@@ -80,21 +98,32 @@ class Validator {
 					$rules['name'] = '';
 				}
 				
+				
 				foreach($rules['rules'] as $rule){
-					$method = 'valid'.ucfirst($rule);
 					
-					
-					if (!method_exists($this, $method)) {
-						throw new BaseException("Method {$rule} not found");
+					if (strripos($rule, ':') !== false) {
+						$ruleAndParams = explode(':', $rule);
+						$rule = $ruleAndParams[0];
+						$param = $ruleAndParams[1];
+						$callbackParams = [$input, $param];
+					}else {
+						$callbackParams = [$input];
+						$param = '';
 					}
 					
-					$response = call_user_func_array([$this, $method], [$input]);
+					$method = 'valid'.ucfirst($rule);
+					
+					if (!method_exists($this, $method)) {
+						throw new BaseException("Method {$method} not found");
+					}
+
+					$response = call_user_func_array([$this, $method], $callbackParams);
 
 					if($response === false){
 						if(!isset($message[$rule])){
 							$this -> errors[$field][] = 'Проверьте правильно ли заполнено поле '.$rules['name'];
 						}else{
-							$this -> errors[$field][] = sprintf($message[$rule], $rules['name']);
+							$this -> errors[$field][] = sprintf($message[$rule], $rules['name'], $param);
 						}
 					}
 				}
@@ -102,7 +131,6 @@ class Validator {
 		}
 		
 		return count($this -> errors()) ? false : true;
-		
 	}
 	
 	
@@ -110,7 +138,8 @@ class Validator {
 		return [
 			'required' => 'Поле %s обязательно для заполнения',
 			'email' => 'В поле %s введен не валидный Email',
-			//'alpha' => 'dd'
+			'alpha' => 'В поле %s введены запрещенные символы, разрешено [а-яА-ЯёЁa-zA-Z]',
+			'min' => 'Значение %s поля должно быть больше %s'
 		];
 	}
 	

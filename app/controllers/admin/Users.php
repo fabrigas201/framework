@@ -41,11 +41,11 @@ class Users extends Controller{
 		$rules = [
 			'email' => [
 				'name' => 'Email',
-				'rules' => ['required', 'email', 'alpha'],
+				'rules' => ['required', 'email'],
 			],
 			'lastname' => [
 				'name' => 'Фамилия',
-				'rules' => ['alpha', 'required']
+				'rules' => ['alpha', 'required', 'min:2']
 				
 			]
 		];
