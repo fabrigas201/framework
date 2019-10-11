@@ -1,2 +1,2 @@
-# freamwork
+#framework, #php, #MVC
 мини фреймворк
